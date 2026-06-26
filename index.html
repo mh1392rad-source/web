@@ -29,7 +29,7 @@
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 48px;
-            padding: 2rem 2rem 2.2rem;
+            padding: 2rem 2rem 1.8rem;
             box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.06);
             transition: 0.3s;
         }
@@ -125,14 +125,6 @@
             background: #36466b;
         }
 
-        .btn-success {
-            background: #1f9a6e;
-        }
-
-        .btn-success:hover {
-            background: #2bb884;
-        }
-
         .btn:active {
             transform: scale(0.97);
         }
@@ -217,26 +209,113 @@
             color: white;
         }
 
-        .footer-note {
-            margin-top: 1.2rem;
-            color: #5e729b;
-            font-size: 0.85rem;
-            text-align: center;
-            border-top: 1px solid #1f2b44;
+        /* ===== بخش پایین: امضا ===== */
+        .footer-credit {
+            margin-top: 1.8rem;
             padding-top: 1.2rem;
-            opacity: 0.9;
+            border-top: 1px solid #1f2b44;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem 1.2rem;
+            text-align: center;
         }
 
-        .empty-state {
-            color: #5a709b;
-            font-style: italic;
-            font-weight: 300;
+        .credit-text {
+            color: #8a9fc9;
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 0.2px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 0.3rem 1.2rem;
+            border-radius: 50px;
+            border: 1px solid #1f2b44;
+            display: inline-flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.2rem 0.6rem;
+        }
+
+        .credit-text .heart {
+            color: #ff4466;
+            font-size: 1.1rem;
+            animation: pulse 1.5s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.25); }
+        }
+
+        .credit-text strong {
+            color: #c9daff;
+            font-weight: 500;
+        }
+
+        .credit-text .site-link {
+            color: #6a8fff;
+            text-decoration: none;
+            border-bottom: 1px dashed #3e63c0;
+            transition: 0.2s;
+            font-weight: 500;
+        }
+
+        .credit-text .site-link:hover {
+            color: #b7cdff;
+            border-bottom-color: #7fa3ff;
+        }
+
+        .channel-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: #1f2a44;
+            padding: 0.35rem 1.2rem 0.35rem 1rem;
+            border-radius: 50px;
+            border: 1px solid #3a4d78;
+            transition: 0.2s;
+            color: #b7ccff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .channel-link:hover {
+            background: #2d3d66;
+            border-color: #6a8aff;
+            color: white;
+            transform: scale(1.02);
+            box-shadow: 0 6px 18px rgba(79, 124, 255, 0.15);
+        }
+
+        .channel-link svg {
+            width: 18px;
+            height: 18px;
+            fill: #7fa3ff;
+            transition: 0.2s;
+        }
+
+        .channel-link:hover svg {
+            fill: #b7cdff;
+        }
+
+        .footer-note {
+            margin-top: 0.6rem;
+            color: #5e729b;
+            font-size: 0.8rem;
+            text-align: center;
+            opacity: 0.7;
+            width: 100%;
         }
 
         @media (max-width: 550px) {
             .card { padding: 1.5rem; }
             h1 { font-size: 1.5rem; }
             .btn { padding: 0.7rem 1.2rem; }
+            .footer-credit { flex-direction: column; align-items: center; }
         }
     </style>
 </head>
@@ -246,17 +325,22 @@
     <h1>🧩  سایت‌ساز لحظه‌ای</h1>
     <div class="sub">کد HTML خود را وارد کنید، سایت را بسازید و لینک دریافت کنید</div>
 
-    <textarea id="htmlCodeInput" placeholder="&lt;!DOCTYPE html&gt;&#10;&lt;html&gt;&#10;&lt;head&gt;&lt;title&gt;صفحه من&lt;/title&gt;&lt;/head&gt;&#10;&lt;body&gt;&#10;  &lt;h1&gt;سلام دنیا!&lt;/h1&gt;&#10;&lt;/body&gt;&#10;&lt;/html&gt;">&lt;!DOCTYPE html&gt;
+    <textarea id="htmlCodeInput" placeholder="&lt;!DOCTYPE html&gt;&#10;&lt;html&gt;&#10;&lt;head&gt;&lt;title&gt;صفحه من&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&#10;  &lt;h1&gt;سلام دنیا!&lt;/h1&gt;&#10;&lt;/body&gt;&#10;&lt;/html&gt;">&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;fa&quot;&gt;
 &lt;head&gt;
   &lt;meta charset=&quot;UTF-8&quot;&gt;
   &lt;title&gt;صفحه نمونه&lt;/title&gt;
 &lt;/head&gt;
-&lt;body style=&quot;font-family: sans-serif; background: #f5f9ff; display: flex; justify-content: center; align-items: center; height: 100vh; margin:0;&quot;&gt;
-  &lt;div style=&quot;background: white; padding: 2.5rem 3rem; border-radius: 60px; box-shadow: 0 18px 40px rgba(0,0,0,0.08); text-align:center;&quot;&gt;
+&lt;body style=&quot;font-family: sans-serif; background: #f5f9ff; display: flex; justify-content: center; align-items: center; height: 100vh; margin:0; flex-direction: column;&quot;&gt;
+  &lt;div style=&quot;background: white; padding: 2.5rem 3rem; border-radius: 60px; box-shadow: 0 18px 40px rgba(0,0,0,0.08); text-align:center; max-width: 500px;&quot;&gt;
     &lt;h2 style=&quot;color: #1d2b4b;&quot;&gt;🚀  سایت شما آماده است!&lt;/h2&gt;
     &lt;p style=&quot;color: #3a4e74;&quot;&gt;این صفحه با کد HTML شما ساخته شده.&lt;/p&gt;
     &lt;div style=&quot;background: #edf3ff; padding: 0.5rem 1.5rem; border-radius: 50px; display:inline-block;&quot;&gt;✨ موفق باشید ✨&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;margin-top: 2rem; color: #6a7fa0; font-size: 0.85rem; text-align: center; border-top: 1px solid #dce4f5; padding-top: 1.2rem; width: 85%; max-width: 450px; line-height: 1.8;&quot;&gt;
+    &lt;span style=&quot;color: #ff4466;&quot;&gt;❤️&lt;/span&gt; ساخته شده با عشق توسط &lt;strong style=&quot;color: #1a3a6a;&quot;&gt;محمد حسین حبیبی راد&lt;/strong&gt;
+    &lt;br&gt;
+    &lt;span style=&quot;font-size: 0.8rem; color: #8a9fc9;&quot;&gt;⚡ توسط &lt;a href=&quot;https://mh1392rad-source.github.io/web/&quot; target=&quot;_blank&quot; style=&quot;color: #4f7cff; text-decoration: none; border-bottom: 1px dashed #4f7cff;&quot;&gt;سایت‌ساز لحظه‌ای&lt;/a&gt; &lt;/span&gt;
   &lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;</textarea>
@@ -276,6 +360,25 @@
             <span class="empty-state">هنوز سایتی ساخته نشده، کد را وارد کنید و بزنید «ساخت سایت»</span>
         </div>
     </div>
+
+    <!-- ===== بخش پایین: امضا ===== -->
+    <div class="footer-credit">
+        <div class="credit-text">
+            <span class="heart">❤️</span>
+            <span>ساخته شده با عشق توسط</span>
+            <strong>محمد حسین حبیبی راد</strong>
+            <span style="opacity:0.3; margin:0 0.2rem;">•</span>
+            <a href="https://mh1392rad-source.github.io/web/" target="_blank" class="site-link">سایت‌ساز لحظه‌ای</a>
+        </div>
+        <a href="https://eitaa.com/irandigital_python" target="_blank" rel="noopener noreferrer" class="channel-link">
+            <svg viewBox="0 0 24 24" width="18" height="18" style="fill:#7fa3ff;">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/>
+                <rect x="9" y="8" width="2" height="8"/>
+                <rect x="13" y="8" width="2" height="8"/>
+            </svg>
+            <span>eitaa.com/irandigital_python</span>
+        </a>
+    </div>
     <div class="footer-note">
         ⚡  کد HTML شما به یک لینک اختصاصی تبدیل می‌شود • کلیک کنید و سایتتان را ببینید
     </div>
@@ -290,25 +393,24 @@
         const linkContainer = document.getElementById('generatedLink');
         const statusBadge = document.getElementById('statusBadge');
 
+        // لینک سایت‌ساز
+        const toolUrl = 'https://mh1392rad-source.github.io/web/';
+
         // تابع برای ساخت لینک داده‌ای (data URI) از کد HTML
         function buildSiteLink(htmlCode) {
-            // حذف فضای خالی اضافی در ابتدا و انتها (اختیاری)
             const trimmed = htmlCode.trim();
             if (!trimmed) {
-                return null;   // کد خالی
+                return null;
             }
-            // تبدیل به data URI با نوع text/html و کاراکتر set utf-8
             const encoded = encodeURIComponent(trimmed);
             return `data:text/html;charset=utf-8,${encoded}`;
         }
 
         // تابع برای به‌روزرسانی رابط کاربری با لینک جدید
         function updateLinkDisplay(link) {
-            // پاک کردن محتوای قبلی
             linkContainer.innerHTML = '';
 
             if (!link) {
-                // حالت خالی / خطا
                 const emptySpan = document.createElement('span');
                 emptySpan.className = 'empty-state';
                 emptySpan.textContent = '⚠️  کد HTML معتبر وارد کنید (خالی نباشد)';
@@ -318,32 +420,26 @@
                 return;
             }
 
-            // ایجاد لینک قابل کلیک
             const anchor = document.createElement('a');
             anchor.href = link;
             anchor.target = '_blank';
             anchor.rel = 'noopener noreferrer';
             anchor.textContent = link.length > 70 ? link.substring(0, 70) + '…' : link;
-            anchor.title = link;  // نمایش کامل در هاور
+            anchor.title = link;
 
-            // دکمه کپی
             const copyBtn = document.createElement('button');
             copyBtn.className = 'copy-btn';
             copyBtn.textContent = '📋  کپی';
             copyBtn.setAttribute('aria-label', 'کپی لینک');
 
-            // اضافه کردن به کانتینر
             linkContainer.appendChild(anchor);
             linkContainer.appendChild(copyBtn);
 
-            // تغییر وضعیت
             statusBadge.textContent = '✅  آماده';
             statusBadge.style.color = '#7ddfb0';
 
-            // رویداد کپی
             copyBtn.addEventListener('click', function(e) {
                 e.stopPropagation();
-                // کپی کردن لینک کامل (نه متن نمایشی)
                 const fullLink = link;
                 if (navigator.clipboard && navigator.clipboard.writeText) {
                     navigator.clipboard.writeText(fullLink)
@@ -355,18 +451,14 @@
                             }, 2200);
                         })
                         .catch(() => {
-                            // fallback
                             copyViaFallback(fullLink, copyBtn);
                         });
                 } else {
                     copyViaFallback(fullLink, copyBtn);
                 }
             });
-
-            // همچنین با کلیک روی خود لینک، صفحه جدید باز می‌شود (همانطور که anchor کار می‌کند)
         }
 
-        // fallback کپی برای مرورگرهای قدیمی
         function copyViaFallback(text, btnElement) {
             const textArea = document.createElement('textarea');
             textArea.value = text;
@@ -393,25 +485,21 @@
             document.body.removeChild(textArea);
         }
 
-        // تابع اصلی ساخت لینک و نمایش
         function generateAndDisplay() {
             const code = textarea.value;
             const link = buildSiteLink(code);
             if (link) {
                 updateLinkDisplay(link);
             } else {
-                updateLinkDisplay(null);   // خالی
+                updateLinkDisplay(null);
             }
         }
 
-        // پیش‌نمایش در تب جدید (با استفاده از لینک ساخته شده)
         function previewSite() {
             const code = textarea.value;
             const link = buildSiteLink(code);
             if (link) {
-                // باز کردن در تب جدید
                 window.open(link, '_blank');
-                // همچنین وضعیت را به‌روز می‌کنیم
                 updateLinkDisplay(link);
             } else {
                 alert('لطفاً کد HTML معتبری وارد کنید (نباید خالی باشد).');
@@ -419,7 +507,6 @@
             }
         }
 
-        // بازنشانی (پر کردن با کد نمونه)
         function resetToSample() {
             const sample = `<!DOCTYPE html>
 <html lang="fa">
@@ -427,22 +514,24 @@
   <meta charset="UTF-8">
   <title>صفحه نمونه</title>
 </head>
-<body style="font-family: sans-serif; background: #f5f9ff; display: flex; justify-content: center; align-items: center; height: 100vh; margin:0;">
-  <div style="background: white; padding: 2.5rem 3rem; border-radius: 60px; box-shadow: 0 18px 40px rgba(0,0,0,0.08); text-align:center;">
+<body style="font-family: sans-serif; background: #f5f9ff; display: flex; justify-content: center; align-items: center; height: 100vh; margin:0; flex-direction: column;">
+  <div style="background: white; padding: 2.5rem 3rem; border-radius: 60px; box-shadow: 0 18px 40px rgba(0,0,0,0.08); text-align:center; max-width: 500px;">
     <h2 style="color: #1d2b4b;">🚀  سایت شما آماده است!</h2>
     <p style="color: #3a4e74;">این صفحه با کد HTML شما ساخته شده.</p>
     <div style="background: #edf3ff; padding: 0.5rem 1.5rem; border-radius: 50px; display:inline-block;">✨ موفق باشید ✨</div>
   </div>
+  <div style="margin-top: 2rem; color: #6a7fa0; font-size: 0.85rem; text-align: center; border-top: 1px solid #dce4f5; padding-top: 1.2rem; width: 85%; max-width: 450px; line-height: 1.8;">
+    <span style="color: #ff4466;">❤️</span> ساخته شده با عشق توسط <strong style="color: #1a3a6a;">محمد حسین حبیبی راد</strong>
+    <br>
+    <span style="font-size: 0.8rem; color: #8a9fc9;">⚡ توسط <a href="${toolUrl}" target="_blank" style="color: #4f7cff; text-decoration: none; border-bottom: 1px dashed #4f7cff;">سایت‌ساز لحظه‌ای</a> </span>
+  </div>
 </body>
 </html>`;
             textarea.value = sample;
-            // بعد از ریست، لینک را هم بازسازی کن
             generateAndDisplay();
         }
 
-        // بارگذاری اولیه: با مقدار پیش‌فرض (که داخل textarea است) لینک بساز
         function initialize() {
-            // اگر textarea خالی نبود، لینک بساز
             if (textarea.value.trim() !== '') {
                 const initialLink = buildSiteLink(textarea.value);
                 if (initialLink) {
@@ -451,24 +540,14 @@
                     updateLinkDisplay(null);
                 }
             } else {
-                // اگر خالی است، نمونه را پر کن (ولی برای این نسخه، مقدار پیش‌فرض در html هست)
-                // اما برای احتیاط:
-                if (textarea.value.trim() === '') {
-                    resetToSample();
-                } else {
-                    generateAndDisplay();
-                }
+                resetToSample();
             }
         }
 
-        // رویدادها
         generateBtn.addEventListener('click', generateAndDisplay);
         previewBtn.addEventListener('click', previewSite);
         resetBtn.addEventListener('click', resetToSample);
 
-        // در صورتی که کاربر با کلیدهای میانبر یا هر روش دیگری مقدار را تغییر داد، 
-        // اما برای راحتی، دکمه ساخت را می‌زند. 
-        // همچنین با فشردن Ctrl+Enter در textarea میشه ساخت (اختیاری)
         textarea.addEventListener('keydown', function(e) {
             if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
                 e.preventDefault();
@@ -476,7 +555,6 @@
             }
         });
 
-        // مقداردهی اولیه
         initialize();
     })();
 </script>
