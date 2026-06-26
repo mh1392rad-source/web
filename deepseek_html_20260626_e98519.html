@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سایت‌ساز فوری HTML</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(145deg, #0b1120 0%, #1a253a 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+        }
+
+        .card {
+            max-width: 880px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 48px;
+            padding: 2rem 2rem 2.2rem;
+            box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+            transition: 0.3s;
+        }
+
+        h1 {
+            font-weight: 500;
+            font-size: 1.9rem;
+            letter-spacing: -0.5px;
+            color: #f0f4ff;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .sub {
+            color: #9aaacb;
+            margin-bottom: 1.8rem;
+            font-size: 1rem;
+            border-left: 3px solid #4f7cff;
+            padding-left: 1rem;
+            background: rgba(79, 124, 255, 0.06);
+            border-radius: 0 12px 12px 0;
+        }
+
+        textarea {
+            width: 100%;
+            height: 200px;
+            padding: 1.2rem 1.4rem;
+            font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+            font-size: 0.95rem;
+            background: #0d1422;
+            border: 1px solid #2d3b5a;
+            border-radius: 28px;
+            color: #e0eaff;
+            resize: vertical;
+            outline: none;
+            transition: 0.25s;
+            line-height: 1.6;
+            tab-size: 2;
+            box-shadow: inset 0 6px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        textarea:focus {
+            border-color: #6a8aff;
+            box-shadow: 0 0 0 4px rgba(79, 124, 255, 0.25), inset 0 6px 12px rgba(0, 0, 0, 0.6);
+        }
+
+        .action-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.8rem 0 1.2rem;
+            align-items: center;
+        }
+
+        .btn {
+            background: #2b3b60;
+            border: none;
+            padding: 0.9rem 2.2rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #f0f4ff;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            letter-spacing: 0.3px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            box-shadow: 0 8px 18px -8px rgba(0, 0, 0, 0.5);
+            flex: 1 1 auto;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: #4f7cff;
+            box-shadow: 0 8px 20px -6px #1f3f9e;
+        }
+
+        .btn-primary:hover {
+            background: #6a8fff;
+            transform: scale(1.02);
+            box-shadow: 0 10px 28px -6px #2f53c0;
+        }
+
+        .btn-secondary {
+            background: #28324b;
+        }
+
+        .btn-secondary:hover {
+            background: #36466b;
+        }
+
+        .btn-success {
+            background: #1f9a6e;
+        }
+
+        .btn-success:hover {
+            background: #2bb884;
+        }
+
+        .btn:active {
+            transform: scale(0.97);
+        }
+
+        .output-box {
+            background: #0c1322;
+            border-radius: 28px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.6rem 0 0.8rem;
+            border: 1px solid #2d3b5a;
+            transition: 0.2s;
+            box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .output-label {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #9bb0d6;
+            font-weight: 400;
+            font-size: 0.9rem;
+            letter-spacing: 0.3px;
+            margin-bottom: 0.6rem;
+        }
+
+        .output-label span {
+            background: #1f2a42;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            color: #b7cbff;
+        }
+
+        #generatedLink {
+            word-break: break-all;
+            background: #0b111f;
+            padding: 0.9rem 1.2rem;
+            border-radius: 40px;
+            border: 1px solid #293856;
+            color: #b7d0ff;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        #generatedLink a {
+            color: #7fa3ff;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed #3e63c0;
+            padding-bottom: 1px;
+            transition: 0.15s;
+            flex: 1;
+            min-width: 180px;
+        }
+
+        #generatedLink a:hover {
+            color: #b7cdff;
+            border-bottom-color: #7fa3ff;
+        }
+
+        .copy-btn {
+            background: transparent;
+            border: 1px solid #3b4e78;
+            color: #b0c8ff;
+            padding: 0.4rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: 0.15s;
+            font-weight: 500;
+            background: #1b253f;
+            white-space: nowrap;
+        }
+
+        .copy-btn:hover {
+            background: #2f3f68;
+            border-color: #6a8aff;
+            color: white;
+        }
+
+        .footer-note {
+            margin-top: 1.2rem;
+            color: #5e729b;
+            font-size: 0.85rem;
+            text-align: center;
+            border-top: 1px solid #1f2b44;
+            padding-top: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .empty-state {
+            color: #5a709b;
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        @media (max-width: 550px) {
+            .card { padding: 1.5rem; }
+            h1 { font-size: 1.5rem; }
+            .btn { padding: 0.7rem 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>🧩  سایت‌ساز لحظه‌ای</h1>
+    <div class="sub">کد HTML خود را وارد کنید، سایت را بسازید و لینک دریافت کنید</div>
+
+    <textarea id="htmlCodeInput" placeholder="&lt;!DOCTYPE html&gt;&#10;&lt;html&gt;&#10;&lt;head&gt;&lt;title&gt;صفحه من&lt;/title&gt;&lt;/head&gt;&#10;&lt;body&gt;&#10;  &lt;h1&gt;سلام دنیا!&lt;/h1&gt;&#10;&lt;/body&gt;&#10;&lt;/html&gt;">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;fa&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;title&gt;صفحه نمونه&lt;/title&gt;
+&lt;/head&gt;
+&lt;body style=&quot;font-family: sans-serif; background: #f5f9ff; display: flex; justify-content: center; align-items: center; height: 100vh; margin:0;&quot;&gt;
+  &lt;div style=&quot;background: white; padding: 2.5rem 3rem; border-radius: 60px; box-shadow: 0 18px 40px rgba(0,0,0,0.08); text-align:center;&quot;&gt;
+    &lt;h2 style=&quot;color: #1d2b4b;&quot;&gt;🚀  سایت شما آماده است!&lt;/h2&gt;
+    &lt;p style=&quot;color: #3a4e74;&quot;&gt;این صفحه با کد HTML شما ساخته شده.&lt;/p&gt;
+    &lt;div style=&quot;background: #edf3ff; padding: 0.5rem 1.5rem; border-radius: 50px; display:inline-block;&quot;&gt;✨ موفق باشید ✨&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</textarea>
+
+    <div class="action-row">
+        <button class="btn btn-primary" id="generateBtn">⚡  ساخت سایت و لینک</button>
+        <button class="btn btn-secondary" id="previewBtn">👁️  پیش‌نمایش</button>
+        <button class="btn btn-secondary" id="resetBtn">↺  بازنشانی</button>
+    </div>
+
+    <div class="output-box">
+        <div class="output-label">
+            <span>🔗  لینک سایت شما</span>
+            <span id="statusBadge">منتظر ساخت</span>
+        </div>
+        <div id="generatedLink">
+            <span class="empty-state">هنوز سایتی ساخته نشده، کد را وارد کنید و بزنید «ساخت سایت»</span>
+        </div>
+    </div>
+    <div class="footer-note">
+        ⚡  کد HTML شما به یک لینک اختصاصی تبدیل می‌شود • کلیک کنید و سایتتان را ببینید
+    </div>
+</div>
+
+<script>
+    (function() {
+        const textarea = document.getElementById('htmlCodeInput');
+        const generateBtn = document.getElementById('generateBtn');
+        const previewBtn = document.getElementById('previewBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const linkContainer = document.getElementById('generatedLink');
+        const statusBadge = document.getElementById('statusBadge');
+
+        // تابع برای ساخت لینک داده‌ای (data URI) از کد HTML
+        function buildSiteLink(htmlCode) {
+            // حذف فضای خالی اضافی در ابتدا و انتها (اختیاری)
+            const trimmed = htmlCode.trim();
+            if (!trimmed) {
+                return null;   // کد خالی
+            }
+            // تبدیل به data URI با نوع text/html و کاراکتر set utf-8
+            const encoded = encodeURIComponent(trimmed);
+            return `data:text/html;charset=utf-8,${encoded}`;
+        }
+
+        // تابع برای به‌روزرسانی رابط کاربری با لینک جدید
+        function updateLinkDisplay(link) {
+            // پاک کردن محتوای قبلی
+            linkContainer.innerHTML = '';
+
+            if (!link) {
+                // حالت خالی / خطا
+                const emptySpan = document.createElement('span');
+                emptySpan.className = 'empty-state';
+                emptySpan.textContent = '⚠️  کد HTML معتبر وارد کنید (خالی نباشد)';
+                linkContainer.appendChild(emptySpan);
+                statusBadge.textContent = '⚠️  نامعتبر';
+                statusBadge.style.color = '#f7a67a';
+                return;
+            }
+
+            // ایجاد لینک قابل کلیک
+            const anchor = document.createElement('a');
+            anchor.href = link;
+            anchor.target = '_blank';
+            anchor.rel = 'noopener noreferrer';
+            anchor.textContent = link.length > 70 ? link.substring(0, 70) + '…' : link;
+            anchor.title = link;  // نمایش کامل در هاور
+
+            // دکمه کپی
+            const copyBtn = document.createElement('button');
+            copyBtn.className = 'copy-btn';
+            copyBtn.textContent = '📋  کپی';
+            copyBtn.setAttribute('aria-label', 'کپی لینک');
+
+            // اضافه کردن به کانتینر
+            linkContainer.appendChild(anchor);
+            linkContainer.appendChild(copyBtn);
+
+            // تغییر وضعیت
+            statusBadge.textContent = '✅  آماده';
+            statusBadge.style.color = '#7ddfb0';
+
+            // رویداد کپی
+            copyBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                // کپی کردن لینک کامل (نه متن نمایشی)
+                const fullLink = link;
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(fullLink)
+                        .then(() => {
+                            const originalText = copyBtn.textContent;
+                            copyBtn.textContent = '✅  کپی شد!';
+                            setTimeout(() => {
+                                copyBtn.textContent = originalText;
+                            }, 2200);
+                        })
+                        .catch(() => {
+                            // fallback
+                            copyViaFallback(fullLink, copyBtn);
+                        });
+                } else {
+                    copyViaFallback(fullLink, copyBtn);
+                }
+            });
+
+            // همچنین با کلیک روی خود لینک، صفحه جدید باز می‌شود (همانطور که anchor کار می‌کند)
+        }
+
+        // fallback کپی برای مرورگرهای قدیمی
+        function copyViaFallback(text, btnElement) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-9999px';
+            textArea.style.top = '-9999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    const original = btnElement.textContent;
+                    btnElement.textContent = '✅  کپی شد!';
+                    setTimeout(() => {
+                        btnElement.textContent = original;
+                    }, 2000);
+                } else {
+                    alert('لینک را به‌صورت دستی کپی کنید: \n' + text);
+                }
+            } catch (err) {
+                alert('لینک: \n' + text);
+            }
+            document.body.removeChild(textArea);
+        }
+
+        // تابع اصلی ساخت لینک و نمایش
+        function generateAndDisplay() {
+            const code = textarea.value;
+            const link = buildSiteLink(code);
+            if (link) {
+                updateLinkDisplay(link);
+            } else {
+                updateLinkDisplay(null);   // خالی
+            }
+        }
+
+        // پیش‌نمایش در تب جدید (با استفاده از لینک ساخته شده)
+        function previewSite() {
+            const code = textarea.value;
+            const link = buildSiteLink(code);
+            if (link) {
+                // باز کردن در تب جدید
+                window.open(link, '_blank');
+                // همچنین وضعیت را به‌روز می‌کنیم
+                updateLinkDisplay(link);
+            } else {
+                alert('لطفاً کد HTML معتبری وارد کنید (نباید خالی باشد).');
+                updateLinkDisplay(null);
+            }
+        }
+
+        // بازنشانی (پر کردن با کد نمونه)
+        function resetToSample() {
+            const sample = `<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>صفحه نمونه</title>
+</head>
+<body style="font-family: sans-serif; background: #f5f9ff; display: flex; justify-content: center; align-items: center; height: 100vh; margin:0;">
+  <div style="background: white; padding: 2.5rem 3rem; border-radius: 60px; box-shadow: 0 18px 40px rgba(0,0,0,0.08); text-align:center;">
+    <h2 style="color: #1d2b4b;">🚀  سایت شما آماده است!</h2>
+    <p style="color: #3a4e74;">این صفحه با کد HTML شما ساخته شده.</p>
+    <div style="background: #edf3ff; padding: 0.5rem 1.5rem; border-radius: 50px; display:inline-block;">✨ موفق باشید ✨</div>
+  </div>
+</body>
+</html>`;
+            textarea.value = sample;
+            // بعد از ریست، لینک را هم بازسازی کن
+            generateAndDisplay();
+        }
+
+        // بارگذاری اولیه: با مقدار پیش‌فرض (که داخل textarea است) لینک بساز
+        function initialize() {
+            // اگر textarea خالی نبود، لینک بساز
+            if (textarea.value.trim() !== '') {
+                const initialLink = buildSiteLink(textarea.value);
+                if (initialLink) {
+                    updateLinkDisplay(initialLink);
+                } else {
+                    updateLinkDisplay(null);
+                }
+            } else {
+                // اگر خالی است، نمونه را پر کن (ولی برای این نسخه، مقدار پیش‌فرض در html هست)
+                // اما برای احتیاط:
+                if (textarea.value.trim() === '') {
+                    resetToSample();
+                } else {
+                    generateAndDisplay();
+                }
+            }
+        }
+
+        // رویدادها
+        generateBtn.addEventListener('click', generateAndDisplay);
+        previewBtn.addEventListener('click', previewSite);
+        resetBtn.addEventListener('click', resetToSample);
+
+        // در صورتی که کاربر با کلیدهای میانبر یا هر روش دیگری مقدار را تغییر داد، 
+        // اما برای راحتی، دکمه ساخت را می‌زند. 
+        // همچنین با فشردن Ctrl+Enter در textarea میشه ساخت (اختیاری)
+        textarea.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+                e.preventDefault();
+                generateAndDisplay();
+            }
+        });
+
+        // مقداردهی اولیه
+        initialize();
+    })();
+</script>
+
+</body>
+</html>
